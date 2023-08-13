@@ -14,8 +14,25 @@ The user can supply the IP address, listening port, variable name, shellcode for
 To make the shellcode work well, only the `IP address` must be specified. The default port value is `443`, the default variable name is `buf`, the default language is `python`, the default shell type is `cmd.exe`, and generated shellcode is `Not Executed` by default.
 
 ### Simple Shellcode Runner
+#### C
+```c
 
+```
 
+#### Csharp
+```csharp
+
+```
+
+#### PowerShell
+```powershell
+
+```
+
+#### Python
+```python
+
+```
 
 ## Known Issues
 1. According to the supplied IP address, port, and shell type, micr0 shell dynamically generates Null-Free shellcode. I have considered most of the common situations that could generate Null bytes, however, I am aware that if the supplied IP address contains `.255` and `.0` at the same time, for instance, if the IP address is `192.168.0.255`, generated shellcode will contain Null byte. This type of IP address could be rare in practice, and eliminating Null byte for all IP addresses would add more complexity. Therefore, I do not intend to improve this part recently.
