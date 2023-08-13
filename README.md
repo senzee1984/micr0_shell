@@ -6,7 +6,11 @@
 
 ## How to Use
 ### Install Keystone Engine
+To generate shellcode from x64 assembly instructions in a Python script, `keystone` engine dependency is needed. Use `pip` to install Keystone Engine:
 
+```python
+pip install keystone-engine
+```
 
 ### Script Usage
 The user can supply the IP address, listening port, variable name, shellcode format(C/CSharp/python/powershell), shell type(powershell/cmd), and whether to execute generated shellcode(True/False).
