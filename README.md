@@ -1,4 +1,6 @@
 # Lunatic
+Lunatic is a Python script that dynamically generates PIC Null-Free reverse shell shellcode. It is light, convenient, and fast. Generated shellcode can be `27 bytes` smaller than MSF's shellcode (Do not contain `0x00`) at most, depending on supplied shellcode options. Generated shellcode can also be used to evade signature-based detection, considering MSF's shellcode is used widely.
+
 
 ## Background
 
