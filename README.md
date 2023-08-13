@@ -5,6 +5,15 @@ Lunatic is a Python script that dynamically generates PIC Null-Free reverse shel
 ## Background
 
 ## How to Use
+### Install Keystone Engine
+
+
+### Script Usage
+
+
+### Simple Shellcode Runner
+
+
 
 ## Known Issues
 1. According to the supplied IP address, port, and shell type, Lunatic dynamically generates Null-Free shellcode. I have considered most of the common situations that could generate Null bytes, however, I am aware that if the supplied IP address contains `.255` and `.0` at the same time, for instance, if the IP address is `192.168.0.255`, generated shellcode will contain Null byte. This type of IP address could be rare in practice, and eliminating Null byte for all IP addresses would add more complexity. Therefore, I do not intend to improve this part recently.
