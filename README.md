@@ -9,7 +9,9 @@ Lunatic is a Python script that dynamically generates PIC Null-Free reverse shel
 
 
 ### Script Usage
+The user can supply the IP address, listening port, variable name, shellcode format(C/CSharp/python/powershell), shell type(powershell/cmd), and whether to execute generated shellcode(True/False).
 
+To make the shellcode work well, only the `IP address` must be specified. The default port value is `443`, the default variable name is `buf`, the default language is `python`, the default shell type is `cmd.exe`, and generated shellcode is `not executed` by default.
 
 ### Simple Shellcode Runner
 
