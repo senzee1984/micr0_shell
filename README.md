@@ -11,7 +11,9 @@
 ### Script Usage
 The user can supply the IP address, listening port, variable name, shellcode format(C/CSharp/python/powershell), shell type(powershell/cmd), and whether to execute generated shellcode(True/False).
 
-To make the shellcode work well, only the `IP address` must be specified. The default port value is `443`, the default variable name is `buf`, the default language is `python`, the default shell type is `cmd.exe`, and generated shellcode is `Not Executed` by default.
+Only the `IP address` must be specified to make the shellcode work well. The default port value is `443`, the default variable name is `buf`, the default language is `python`, and the default shell type is `cmd.exe`.
+
+Users can choose to execute generated shellcode in this Python script, generated shellcode can also be saved in a binary file. By default, generated shellcode is `NOT EXECUTED` and `NOT SAVED` in a file.
 
 ### Simple Shellcode Runner
 #### C
