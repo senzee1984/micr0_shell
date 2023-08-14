@@ -199,7 +199,7 @@ ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))
 
 2. Regarding the port value, in theory, any port will not generate Null byte. However, due to the implementation of eliminating Null-byte, port `65280` is not usable.
 
-3. Due to the implementation of reverse shell, if double-clicking the shellcode runner in `C` and `C#`, the program will exist fairly soon, however, if you run them via `cmd/powershell`, it will be fine. This issue does not apply to `Python` and `Powershell` shellcode runner. It is still under investigation, it is related to the shellcode.
+3. Due to the implementation of reverse shell, if double-clicking the shellcode runner program, the program will exist fairly soon, however, if you run them via `cmd/powershell`, it will be fine. It is still under investigation, it is related to the shellcode.
 
 ## Future Plan
 
