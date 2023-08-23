@@ -203,7 +203,7 @@ ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))
 
 2. Regarding the port value, in theory, any port will not generate Null byte. However, due to the implementation of eliminating Null-byte, port `65280` is not usable.
 
-3. On `Windows 11`, `double-clicking` the shellcode loader program will cause the shell session to exit quickly. However, if you launch it through `CMD` or `PowerShell`, the shell session will remain active until you disconnect from the server. This issue is currently under investigation and appears to be related to the shellcode itself.
+3. On `Windows 11`, `double-clicking` the shellcode loader program/script will cause the shell session to exit quickly. However, if you launch it through `CMD` or `PowerShell`, the shell session will remain active until you disconnect from the server. This issue is currently under investigation and appears to be related to the shellcode itself.
 
 ## Future Plan
 
