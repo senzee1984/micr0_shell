@@ -63,6 +63,28 @@ pip install keystone-engine
 ### Script Usage
 Users have the flexibility to specify various parameters: the `IP address`, `listening port`, `variable name`, `shellcode format` (options include C, CSharp, Python, and PowerShell), `shell type` (either PowerShell or CMD), whether to `save` the generated shellcode to a file, and whether to `execute` the generated shellcode (True/False).
 
+```bash
+└─# python3 micr0shell.py                                                                                                                         
+
+███╗░░░███╗██╗░█████╗░██████╗░░█████╗░  ░██████╗██╗░░██╗███████╗██╗░░░░░██╗░░░░░
+████╗░████║██║██╔══██╗██╔══██╗██╔══██╗  ██╔════╝██║░░██║██╔════╝██║░░░░░██║░░░░░
+██╔████╔██║██║██║░░╚═╝██████╔╝██║░░██║  ╚█████╗░███████║█████╗░░██║░░░░░██║░░░░░
+██║╚██╔╝██║██║██║░░██╗██╔══██╗██║░░██║  ░╚═══██╗██╔══██║██╔══╝░░██║░░░░░██║░░░░░
+██║░╚═╝░██║██║╚█████╔╝██║░░██║╚█████╔╝  ██████╔╝██║░░██║███████╗███████╗███████╗
+╚═╝░░░░░╚═╝╚═╝░╚════╝░╚═╝░░╚═╝░╚════╝░  ╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
+
+Author: Senzee
+Github Repository: https://github.com/senzee1984/micr0_shell
+Description: Dynamically generate PIC Null-Free Reverse Shell Shellcode
+Attention: In rare cases (.255 and .0 co-exist), generated shellcode could contain NULL bytes, E.G. when IP is 192.168.0.255
+
+
+usage: micr0shell.py [-h] --ip IP [--port PORT] [--language LAN] [--variable VAR] [--type SHELL_TYPE] [--execution CODE_EXEC] [--save SAVE]
+                     [--output OUTPUT]
+micr0shell.py: error: the following arguments are required: --ip/-i
+
+```
+
 Only the `IP address` must be specified to make the shellcode work well. The default port value is `443`, the default variable name is `buf`, the default language is `python`, and the default shell type is `cmd.exe`.
 
 Users can choose to execute generated shellcode in this Python script, generated shellcode can also be saved in a binary file. By default, generated shellcode is `NOT EXECUTED` and `NOT SAVED` in a file.
