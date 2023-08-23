@@ -199,7 +199,7 @@ ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))
 ```
 
 ## Known Issues
-1. Based on the provided `IP address`, `port`, and `shell type`, micr0 shell dynamically generates Null-Free shellcode. While I've accounted for most common scenarios that could introduce Null bytes, it's worth noting that if the supplied IP address contains both `.255` and `.0`—such as `192.168.0.255`—the generated shellcode will include a Null byte. Though such IP addresses are relatively rare in practice, eliminating Null bytes for all possible IP addresses would significantly increase complexity. As a result, I have no immediate plans to address this issue.
+1. Based on the provided `IP address`, `port`, and `shell type`, micr0shell dynamically generates Null-Free shellcode. While I've accounted for most common scenarios that could introduce Null bytes, it's worth noting that if the supplied IP address contains both `.255` and `.0`—such as `192.168.0.255`—the generated shellcode will include a Null byte. Though such IP addresses are relatively rare in practice, eliminating Null bytes for all possible IP addresses would significantly increase complexity. As a result, I have no immediate plans to address this issue.
 
 2. Concerning the port value, theoretically, no port should produce a Null byte. However, due to the way Null-byte elimination is implemented, port `65280` is not usable.
 
