@@ -199,9 +199,9 @@ ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))
 ```
 
 ## Known Issues
-1. According to the supplied IP address, port, and shell type, micr0 shell dynamically generates Null-Free shellcode. I have considered most of the common situations that could generate Null bytes, however, I am aware that if the supplied IP address contains `.255` and `.0` at the same time, for instance, if the IP address is `192.168.0.255`, generated shellcode will contain Null byte. This type of IP address could be rare in practice, and eliminating Null byte for all IP addresses would add more complexity. Therefore, I do not intend to improve this part recently.
+1. Based on the provided `IP address`, `port`, and `shell type`, micr0 shell dynamically generates Null-Free shellcode. While I've accounted for most common scenarios that could introduce Null bytes, it's worth noting that if the supplied IP address contains both `.255` and `.0`—such as `192.168.0.255`—the generated shellcode will include a Null byte. Though such IP addresses are relatively rare in practice, eliminating Null bytes for all possible IP addresses would significantly increase complexity. As a result, I have no immediate plans to address this issue.
 
-2. Regarding the port value, in theory, any port will not generate Null byte. However, due to the implementation of eliminating Null-byte, port `65280` is not usable.
+2. Concerning the port value, theoretically, no port should produce a Null byte. However, due to the way Null-byte elimination is implemented, port `65280` is not usable.
 
 3. On `Windows 11`, `double-clicking` the shellcode loader program/script will cause the shell session to exit quickly. However, if you launch it through `CMD` or `PowerShell`, the shell session will remain active until you disconnect from the server. This issue is currently under investigation and appears to be related to the shellcode itself.
 
@@ -209,7 +209,7 @@ ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))
 
 
 ## Test Case
-Shellcode signature evasion capability. Sample files are uploaded to VirusTotal in Aug, 2023.
+Shellcode signature evasion capability test, sample files are uploaded to VirusTotal in Aug, 2023.
 
 ### Shellcode Bin File
 Use msfvenom and micr0shell to generate raw binary files, and upload them, respectively. There are 2 samples generated from msfvenom, one includes 0x00, and the other is Null-Free. The comparison is as follows:
