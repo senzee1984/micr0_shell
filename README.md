@@ -69,6 +69,10 @@ Only the `IP address` must be specified to make the shellcode work well. The def
 Users can choose to execute generated shellcode in this Python script, generated shellcode can also be saved in a binary file. By default, generated shellcode is `NOT EXECUTED` and `NOT SAVED` in a file.
 
 ### Simple Shellcode Runner
+Simple shellcode loaders in different common languages are provided below to test the generated shellcode conveniently. 
+
+However, if you're interested in evaluating evasion capabilities, be aware that the following shellcode loaders could themselves be detected. For more advanced evasion techniques, you may want to explore alternative shellcode loaders, which are beyond the scope of this README document.
+
 #### C
 ```c
 #include "windows.h"
@@ -199,7 +203,7 @@ ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))
 
 2. Regarding the port value, in theory, any port will not generate Null byte. However, due to the implementation of eliminating Null-byte, port `65280` is not usable.
 
-3. Due to the implementation of reverse shell, if double-clicking the shellcode runner program, the program will exist fairly soon, however, if you run them via `cmd/powershell`, it will be fine. According to test cases so far, the issue applies to C and CSharp shellcode runner. It is still under investigation, it is related to the shellcode.
+3. On `Windows 11`, `double-clicking` the shellcode loader program will cause the shell session to exit quickly. However, if you launch it through `CMD` or `PowerShell`, the shell session will remain active until you disconnect from the server. This issue is currently under investigation and appears to be related to the shellcode itself.
 
 ## Future Plan
 
