@@ -62,7 +62,7 @@ pip install keystone-engine
 ```
 
 ### Script Usage
-The user can supply the IP address, listening port, variable name, shellcode format(C/CSharp/python/powershell), shell type(powershell/cmd), and whether to execute generated shellcode(True/False).
+Users have the flexibility to specify various parameters: the `IP address`, `listening port`, `variable name`, `shellcode format` (options include C, CSharp, Python, and PowerShell), `shell type` (either PowerShell or CMD), whether to `save` the generated shellcode to a file, and whether to `execute` the generated shellcode (True/False).
 
 Only the `IP address` must be specified to make the shellcode work well. The default port value is `443`, the default variable name is `buf`, the default language is `python`, and the default shell type is `cmd.exe`.
 
